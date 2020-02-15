@@ -11,7 +11,7 @@ def main():
     line_wth = 2
     square_wth = 10
     square_hght = 10
-    table_li_grid = [[],[]]
+    table_li_grid = [[], []]
     pg.init()
     clock = pg.time.Clock()
     win = pg.display.set_mode(ratio)
@@ -25,11 +25,12 @@ def main():
             table_li_grid[row].append(0)
     for row in range(WIDTH):
         for column in range(HEIGHT):
-            color = (0,0,0)
+            color = (0, 0, 0)
             if table_li_grid[row][column] == 1:
-                color = (255,255,255)
-            pg.draw.rect(win,(0,0,0), [(line_wth + square_wth) * column + line_wth, (line_wth + square_hght) * row + line_wth, square_wth, square_hght])
-
+                color = (255, 255, 255)
+            pg.draw.rect(win, (0, 0, 0),
+                         [(line_wth + square_wth) * column + line_wth, (line_wth + square_hght) * row + line_wth,
+                          square_wth, square_hght])
 
     while True:
         for _ in pg.event.get():
