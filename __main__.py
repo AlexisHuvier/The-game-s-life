@@ -19,12 +19,12 @@ def main():
     grid = Grid()
     grid.__init__()
     win.fill((255, 255, 255))
-    for row in range(WIDTH):
+    for row in range(50):
         table_li_grid.append([])
-        for column in range(HEIGHT):
+        for column in range(67):
             table_li_grid[row].append(0)
-    for row in range(WIDTH):
-        for column in range(HEIGHT):
+    for row in range(50):
+        for column in range(67):
             color = (0, 0, 0)
             if table_li_grid[row][column] == 1:
                 color = (255, 255, 255)
