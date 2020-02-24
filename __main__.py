@@ -18,17 +18,14 @@ def main():
     pg.display.set_caption("The game's life | {} FPS".format(round(clock.get_fps())))
     grid = Grid()
     grid.__init__()
-    win.fill((255, 255, 255))
+    win.fill((0, 0, 0))
     for row in range(50):
         table_li_grid.append([])
         for column in range(67):
             table_li_grid[row].append(0)
     for row in range(50):
         for column in range(67):
-            color = (0, 0, 0)
-            if table_li_grid[row][column] == 1:
-                color = (255, 255, 255)
-            pg.draw.rect(win, (0, 0, 0),
+            pg.draw.rect(win, (255, 255, 255),
                          [(line_wth + square_wth) * column + line_wth, (line_wth + square_hght) * row + line_wth,
                           square_wth, square_hght])
 
