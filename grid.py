@@ -22,10 +22,22 @@ class Grid:
         cls.m_grid[row][column] = 1
         print("Click ", pos, "Grid coordinates: ", row, column)
 
-    def getLine_wth(self): return self.m_line_wth
-    def getSquare_wth(self): return self.m_square_wth
-    def getSquare_hght(self): return self.m_square_hght
-    def setLine_wth(self, value): self.m_line_wth = value
-    def setSquare_wth(self, value): self.m_square_wth = value
-    def setSquare_hght(self, value): self.m_square_hght = value
+    @classmethod
+    def getLine_wth(cls): return cls.m_line_wth
+
+    @classmethod
+    def getSquare_wth(cls): return cls.m_square_wth
+
+    @classmethod
+    def getSquare_hght(cls): return cls.m_square_hght
+
+    @classmethod
+    def setLine_wth(cls, value): cls.m_line_wth = value
+
+    @classmethod
+    def setSquare_wth(cls, value): cls.m_square_wth = value
+
+    @classmethod
+    def setSquare_hght(cls, value): cls.m_square_hght = value
+
 
