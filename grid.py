@@ -11,7 +11,8 @@ class Grid:
         for row in range(50):
             for column in range(67):
                 pg.draw.rect(_win, (255, 255, 255),
-                             [(self.getLine_wth() + self.getSquare_wth()) * column + self.getLine_wth(), (self.getLine_wth() + self.getSquare_hght()) * row + self.getLine_wth(),
+                             [(self.getLine_wth() + self.getSquare_wth()) * column + self.getLine_wth(),
+                              (self.getLine_wth() + self.getSquare_hght()) * row + self.getLine_wth(),
                               self.getSquare_wth(), self.getSquare_hght()])
 
     @classmethod
@@ -23,21 +24,25 @@ class Grid:
         print("Click ", pos, "Grid coordinates: ", row, column)
 
     @classmethod
-    def getLine_wth(cls): return cls.m_line_wth
+    def getLine_wth(cls):
+        return cls.m_line_wth
 
     @classmethod
-    def getSquare_wth(cls): return cls.m_square_wth
+    def getSquare_wth(cls):
+        return cls.m_square_wth
 
     @classmethod
-    def getSquare_hght(cls): return cls.m_square_hght
+    def getSquare_hght(cls):
+        return cls.m_square_hght
 
     @classmethod
-    def setLine_wth(cls, value): cls.m_line_wth = value
+    def setLine_wth(cls, value):
+        cls.m_line_wth = value
 
     @classmethod
-    def setSquare_wth(cls, value): cls.m_square_wth = value
+    def setSquare_wth(cls, value):
+        cls.m_square_wth = value
 
     @classmethod
-    def setSquare_hght(cls, value): cls.m_square_hght = value
-
-
+    def setSquare_hght(cls, value):
+        cls.m_square_hght = value
