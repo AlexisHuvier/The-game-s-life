@@ -21,7 +21,8 @@ def main():
                 pg.quit()
                 sys.exit(0)
             elif _.type == pg.MOUSEBUTTONDOWN:
-                grid.selectACell()
+                grid.select_cell()
+        grid.generate_life(win)
 
         pg.display.update()
 
