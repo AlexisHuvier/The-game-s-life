@@ -12,8 +12,10 @@ def main():
     clock = pg.time.Clock()
     win = pg.display.set_mode(ratio)
     pg.display.set_caption("The game's life | {} FPS".format(round(clock.get_fps())))
-    win.fill((0, 0, 0))
+    win.fill((25, 25, 25))
     grid = Grid(win)
+    for i in range (100):
+        grid.generate_life(win)
     while True:
         for _ in pg.event.get():
             key = pg.key.get_pressed()
@@ -22,8 +24,6 @@ def main():
                 sys.exit(0)
             elif _.type == pg.MOUSEBUTTONDOWN:
                 grid.select_cell()
-        grid.generate_life(win)
-
         pg.display.update()
 
 
