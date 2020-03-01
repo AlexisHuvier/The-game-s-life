@@ -26,9 +26,9 @@ class Grid:
 
     @classmethod
     def generate_life(cls, _win):
-        random_cell_r, random_cell_c = randint(0, 50 * (Grid.m_square_wth + Grid.m_line_wth)) // (Grid.m_square_wth + Grid.m_line_wth), randint(0, 67 * (Grid.m_square_wth + Grid.m_line_wth)) // (Grid.m_square_hght + Grid.m_line_wth)
-        print(f"Touch ({random_cell_c, random_cell_r})")
-        pg.draw.rect(_win, (0, 0, 0), (pg.Rect(random_cell_r, random_cell_c, cls.getSquare_wth(), cls.getSquare_hght())))
+        random_cell_r, random_cell_c = randint(0, 67 * (Grid.m_square_wth + Grid.m_line_wth)) // (Grid.m_square_wth + Grid.m_line_wth), randint(0, 50 * (Grid.m_square_wth + Grid.m_line_wth)) // (Grid.m_square_hght + Grid.m_line_wth)
+        #print(f"Touch ({random_cell_c, random_cell_r})")
+        pg.draw.rect(_win, (0, 0, 0), (pg.Rect(random_cell_r*cls.getSquare_wth()+cls.getLine_wth()*random_cell_r, random_cell_c*cls.getSquare_hght()+cls.getLine_wth()*random_cell_c, cls.getSquare_wth()*1.4, cls.getSquare_hght()*1.4)))
 
     @classmethod
     def getLine_wth(cls):
@@ -53,3 +53,4 @@ class Grid:
     @classmethod
     def setSquare_hght(cls, value):
         cls.m_square_hght = value
+
