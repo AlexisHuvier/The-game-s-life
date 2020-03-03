@@ -1,11 +1,11 @@
 import pygame as pg
 import sys
 from grid import Grid
+from Cell import CellClass
 import os
 
 ratio = WIDTH, HEIGHT = 800, 600
 os.environ['SDL_VIDEO_CENTERED'] = str(1)
-
 
 
 def main():
@@ -15,6 +15,7 @@ def main():
     pg.display.set_caption("The game's life | {} FPS".format(round(clock.get_fps())))
     win.fill((25, 25, 25))
     grid = Grid(win)
+    cellClass = CellClass()
     [grid.generate_life(win) for _ in range(100)]
     while True:
         for _ in pg.event.get():
@@ -24,7 +25,7 @@ def main():
                 sys.exit(0)
             elif _.type == pg.MOUSEBUTTONDOWN:
                 grid.select_cell()
-        check_life()
+        grid.check_life()
         pg.display.update()
 
 
