@@ -7,6 +7,7 @@ ratio = WIDTH, HEIGHT = 800, 600
 os.environ['SDL_VIDEO_CENTERED'] = str(1)
 
 
+
 def main():
     pg.init()
     clock = pg.time.Clock()
@@ -23,6 +24,7 @@ def main():
                 sys.exit(0)
             elif _.type == pg.MOUSEBUTTONDOWN:
                 grid.select_cell()
+        check_life()
         pg.display.update()
 
 

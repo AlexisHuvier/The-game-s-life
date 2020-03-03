@@ -1,4 +1,5 @@
 from random import randint
+from Cell import Cell, CellClass
 import pygame as pg
 
 
@@ -22,12 +23,10 @@ class Grid:
         column = pos[0] // (Grid.m_square_wth + Grid.m_line_wth)
         row = pos[1] // (Grid.m_square_hght + Grid.m_line_wth)
         cls.m_grid[row][column] = 1
-        print("Click ", pos, "Grid coordinates: ", row, column)
 
     @classmethod
     def generate_life(cls, _win):
         random_cell_r, random_cell_c = randint(0, 67 * (Grid.m_square_wth + Grid.m_line_wth)) // (Grid.m_square_wth + Grid.m_line_wth), randint(0, 50 * (Grid.m_square_wth + Grid.m_line_wth)) // (Grid.m_square_hght + Grid.m_line_wth)
-        #print(f"Touch ({random_cell_c, random_cell_r})")
         pg.draw.rect(_win, (255, 255, 255), (pg.Rect(random_cell_r*cls.getSquare_wth()+cls.getLine_wth()*(random_cell_r+1), random_cell_c*cls.getSquare_hght()+cls.getLine_wth()*(random_cell_c+1), cls.getSquare_wth(), cls.getSquare_hght())))
 
     @classmethod
@@ -53,4 +52,10 @@ class Grid:
     @classmethod
     def setSquare_hght(cls, value):
         cls.m_square_hght = value
+
+    @classmethod
+    def check_life(cls):
+
+
+
 
