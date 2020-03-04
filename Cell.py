@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from enum import Enum, unique
-from typing import overload
 
 
 @unique
@@ -13,6 +12,7 @@ class Cell(Enum):
 class CellShape:
     x: int
     y: int
+    state: Cell
 
     def __init__(self, _x: int, _y: int):
         self.x, self.y = _x, _y
@@ -22,16 +22,19 @@ class CellClass:
     m_cell_list = []
     m_cell = 0
 
-    @staticmethod
-    def set_state(cls, _state):
+    @classmethod
+    def set_state(cls, _cell: CellShape, _state: Cell):
+        cls.m_cell = _cell
         cls.m_cell |= _state
 
-    @staticmethod
-    def un_state(cls, _state):
+    @classmethod
+    def un_state(cls, _cell: CellShape, _state: Cell):
+        cls.m_cell = _cell
         cls.m_cell &= ~_state
 
-    @staticmethod
-    def has_state(cls, _state) -> bool:
+    @classmethod
+    def has_state(cls, _cell: CellShape, _state: Cell) -> bool:
+        cls.m_cell = _cell
         return (cls.m_cell & _state) != 0
 
     @classmethod
@@ -45,6 +48,10 @@ class CellClass:
     @staticmethod
     def remove_cell(cls, _cell: CellShape):
         cls.m_cell_list.remove(_cell)
+
+    @classmethod
+    def get_state(cls, _cell: CellShape) -> int:
+        return _cell.state
 
     @classmethod
     def display_affected(cls):
