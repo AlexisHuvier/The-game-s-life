@@ -28,7 +28,7 @@ class Grid:
     def generate_life(cls, _win):
         random_cell_r, random_cell_c = randint(0, 67 * (Grid.m_square_wth + Grid.m_line_wth)) // (Grid.m_square_wth + Grid.m_line_wth), randint(0, 50 * (Grid.m_square_wth + Grid.m_line_wth)) // (Grid.m_square_hght + Grid.m_line_wth)
         pg.draw.rect(_win, (255, 255, 255), (pg.Rect(random_cell_r*cls.getSquare_wth()+cls.getLine_wth()*(random_cell_r+1), random_cell_c*cls.getSquare_hght()+cls.getLine_wth()*(random_cell_c+1), cls.getSquare_wth(), cls.getSquare_hght())))
-        Cell.CellClass.add_cell(random_cell_r * cls.getSquare_wth() + cls.getLine_wth() * (random_cell_r + 1), random_cell_c * cls.getSquare_hght() + cls.getLine_wth() * (random_cell_c + 1))
+        Cell.CellClass.add_cell_xy(random_cell_r * cls.getSquare_wth() + cls.getLine_wth() * (random_cell_r + 1), random_cell_c * cls.getSquare_hght() + cls.getLine_wth() * (random_cell_c + 1))
 
     @classmethod
     def getLine_wth(cls):
