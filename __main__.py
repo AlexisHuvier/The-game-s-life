@@ -26,7 +26,7 @@ def main():
             elif _.type == pg.MOUSEBUTTONDOWN:
                 grid.select_cell(win)
         #CellClass.set_state()
-        #CellClass.display_affected()
+        CellClass.display_affected()
         grid.check_life()
         pg.display.update()
 
