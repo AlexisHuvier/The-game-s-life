@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from enum import Enum, unique
 from pprint import pprint
+import sys
 
 
 @unique
@@ -23,12 +24,12 @@ class CellClass:
     m_cell_list = []
 
     @classmethod
-    def set_state(cls, _cell: CellShape, _state: Cell):
-        _cell.state = _state
+    def set_state(cls, x: int, y: int, _state: Cell):
+        cls.get_cell(x, y).state = _state
 
     @classmethod
-    def has_state(cls, _cell: CellShape, _state: Cell) -> bool:
-        return cls.get_state(_cell) == _state
+    def has_state(cls, x: int, y: int, _state: Cell) -> bool:
+        return cls.get_state(cls.get_cell(x, y).x, cls.get_cell(x, y).y) == _state
 
     @classmethod
     def add_cell(cls, _cell: CellShape):
@@ -39,9 +40,18 @@ class CellClass:
         cls.m_cell_list.remove(_cell)
 
     @classmethod
-    def get_state(cls, _cell: CellShape) -> Cell:
-        if not (cls.m_cell_list.__contains__(_cell)): print(f"La cellule ({_cell.x, _cell.y}) n'existe pas")
-        return _cell.state
+    def get_state(cls, x: int, y: int) -> Cell:
+        if not (cls.m_cell_list.__contains__(cls.get_cell(x, y))): print(f"La cellule ({x, y}) n'existe pas")
+        return cls.get_cell(x, y).state
+
+    @classmethod
+    def get_cell(cls, x: int, y: int) -> CellShape:
+        for cell in cls.m_cell_list:
+            if cell.x == x and cell.y == y:
+                return cell
+            else:
+                if cell.__eq__(None):
+                    print('\033[1;31;48m' + "Erreur » La cellule ({}, {}) n'est pas un élément de la liste.".format(x, cell.x))
 
     @classmethod
     def display_affected(cls):

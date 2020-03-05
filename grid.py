@@ -17,7 +17,7 @@ class Grid:
                               (self.getLine_wth() + self.getSquare_hght()) * row + self.getLine_wth(),
                               self.getSquare_wth(), self.getSquare_hght()])
                 Cell.CellClass.add_cell(Cell.CellShape(row, column))
-                Cell.CellClass.set_state(Cell.CellShape(row, column), Cell.Cell.IS_DEAD)
+                Cell.CellClass.set_state(row, column, Cell.Cell.IS_DEAD)
 
     @classmethod
     def select_cell(cls, _win):
@@ -45,9 +45,9 @@ class Grid:
         Cell.CellClass.add_cell(
             Cell.CellShape(random_cell_r * cls.getSquare_wth() + cls.getLine_wth() * (random_cell_r + 1),
                            random_cell_c * cls.getSquare_hght() + cls.getLine_wth() * (random_cell_c + 1)))
-        Cell.CellClass.set_state(Cell.CellShape(random_cell_r, random_cell_c), Cell.Cell.IS_ALIVE)
+        Cell.CellClass.set_state(random_cell_r, random_cell_c, Cell.Cell.IS_ALIVE)
         print(
-            f"Cellule ({random_cell_r}, {random_cell_c}) = {Cell.CellClass.get_state(Cell.CellShape(random_cell_r, random_cell_c))}")
+            f"Cellule ({random_cell_r}, {random_cell_c}) = {Cell.CellClass.get_state(random_cell_r, random_cell_c)}")
 
     @classmethod
     def getLine_wth(cls):
