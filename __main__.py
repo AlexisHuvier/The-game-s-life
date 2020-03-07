@@ -24,7 +24,10 @@ def main():
             elif _.type == pg.MOUSEBUTTONDOWN:
                 grid.select_cell(win)
             elif key[pg.K_p]:
-                grid.check_life(win)
+                while 1:
+                    grid.check_life(win)
+                    pg.display.update()
+
         pg.display.update()
 
 
