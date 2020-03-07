@@ -29,11 +29,12 @@ class CellClass:
 
     @classmethod
     def has_state(cls, x: int, y: int, _state: Cell) -> bool:
+        if not (cls.m_cell_list.__contains__(cls.get_cell(x, y))): print(f"La cellule ({x, y}) n'existe pas")
         return cls.get_state(cls.get_cell(x, y).x, cls.get_cell(x, y).y) == _state
 
     @classmethod
-    def add_cell(cls, _cell: CellShape):
-        cls.m_cell_list.append(_cell)
+    def add_cell(cls, x: int, y: int):
+        cls.m_cell_list.append(CellShape(x, y))
 
     @staticmethod
     def remove_cell(cls, _cell: CellShape):
@@ -41,8 +42,8 @@ class CellClass:
 
     @classmethod
     def get_state(cls, x: int, y: int) -> Cell:
-        if not (cls.m_cell_list.__contains__(cls.get_cell(x, y))): print(f"La cellule ({x, y}) n'existe pas")
-        return cls.get_cell(x, y).state
+        if not cls.get_cell(x, y) is None:
+            return cls.get_cell(x, y).state
 
     @classmethod
     def get_cell(cls, x: int, y: int) -> CellShape:
@@ -53,4 +54,5 @@ class CellClass:
 
     @classmethod
     def display_affected(cls):
-        pprint(cls.m_cell_list)
+        for obj in cls.m_cell_list:
+            pprint(f"[{type(obj)}]: {obj}")
