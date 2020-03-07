@@ -25,29 +25,23 @@ class Grid:
         column = pos[0] // (Grid.m_square_wth + Grid.m_line_wth)
         row = pos[1] // (Grid.m_square_hght + Grid.m_line_wth)
         cls.m_grid[row][column] = 1
-        Cell.CellClass.set_state(Cell.CellShape(row, column), Cell.Cell.IS_ALIVE)
+        Cell.CellClass.set_state(row, column, Cell.Cell.IS_ALIVE)
         pg.draw.rect(_win, (39, 174, 96), (
             pg.Rect(column * cls.getSquare_wth() + cls.getLine_wth() * (column + 1),
                     row * cls.getSquare_hght() + cls.getLine_wth() * (row + 1), cls.getSquare_wth(),
                     cls.getSquare_hght())))
         print(
-            f"La cellule est {Cell.CellClass.has_state(Cell.CellShape(row, column), Cell.Cell.IS_ALIVE)} mais elle est {Cell.CellClass.get_state(Cell.CellShape(row, column))}")  # true : vivante, false : morte
+            f"La cellule est {Cell.CellClass.has_state(row, column, Cell.Cell.IS_ALIVE)} mais elle est {Cell.CellClass.get_state(row, column)}")  # true : vivante, false : morte
 
     @classmethod
     def generate_life(cls, _win):
-        random_cell_r, random_cell_c = randint(0, 67 * (Grid.m_square_wth + Grid.m_line_wth)) // (
-                    Grid.m_square_wth + Grid.m_line_wth), randint(0, 50 * (Grid.m_square_wth + Grid.m_line_wth)) // (
-                                                   Grid.m_square_hght + Grid.m_line_wth)
+        random_cell_r, random_cell_c = randint(0, 49), randint(0, 66)
         pg.draw.rect(_win, (42, 204, 113), (
             pg.Rect(random_cell_r * cls.getSquare_wth() + cls.getLine_wth() * (random_cell_r + 1),
                     random_cell_c * cls.getSquare_hght() + cls.getLine_wth() * (random_cell_c + 1), cls.getSquare_wth(),
                     cls.getSquare_hght())))
-        Cell.CellClass.add_cell(
-            Cell.CellShape(random_cell_r * cls.getSquare_wth() + cls.getLine_wth() * (random_cell_r + 1),
-                           random_cell_c * cls.getSquare_hght() + cls.getLine_wth() * (random_cell_c + 1)))
         Cell.CellClass.set_state(random_cell_r, random_cell_c, Cell.Cell.IS_ALIVE)
-        print(
-            f"Cellule ({random_cell_r}, {random_cell_c}) = {Cell.CellClass.get_state(random_cell_r, random_cell_c)}")
+        #print(f"Cellule ({random_cell_r}, {random_cell_c}) = {Cell.CellClass.get_state(random_cell_r, random_cell_c)}")
 
     @classmethod
     def getLine_wth(cls):
