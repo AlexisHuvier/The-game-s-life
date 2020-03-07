@@ -49,9 +49,7 @@ class CellClass:
         for cell in cls.m_cell_list:
             if cell.x == x and cell.y == y:
                 return cell
-            else:
-                if cell.__eq__(None):
-                    print('\033[1;31;48m' + "Erreur » La cellule ({}, {}) n'est pas un élément de la liste.".format(x, cell.x))
+        print('\033[1;31;48m' + "Erreur » La cellule ({}, {}) n'est pas un élément de la liste.".format(x, y))
 
     @classmethod
     def display_affected(cls):
