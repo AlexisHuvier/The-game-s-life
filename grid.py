@@ -25,13 +25,7 @@ class Grid:
         column = pos[0] // (Grid.m_square_wth + Grid.m_line_wth)
         row = pos[1] // (Grid.m_square_hght + Grid.m_line_wth)
         cls.m_grid[row][column] = 1
-        Cell.CellClass.set_state(row, column, Cell.Cell.IS_ALIVE)
-        pg.draw.rect(_win, (39, 174, 96), (
-            pg.Rect(column * cls.getSquare_wth() + cls.getLine_wth() * (column + 1),
-                    row * cls.getSquare_hght() + cls.getLine_wth() * (row + 1), cls.getSquare_wth(),
-                    cls.getSquare_hght())))
-        print(
-            f"La cellule est {Cell.CellClass.has_state(row, column, Cell.Cell.IS_ALIVE)} mais elle est {Cell.CellClass.get_state(row, column)}")  # true : vivante, false : morte
+        print(f"La cellule est {Cell.CellClass.has_state(row, column, Cell.Cell.IS_ALIVE)} mais elle est {Cell.CellClass.get_state(row, column)}")  # true : vivante, false : morte
 
     @classmethod
     def generate_life(cls, _win):
@@ -41,7 +35,6 @@ class Grid:
                     random_cell_c * cls.getSquare_hght() + cls.getLine_wth() * (random_cell_c + 1), cls.getSquare_wth(),
                     cls.getSquare_hght())))
         Cell.CellClass.set_state(random_cell_r, random_cell_c, Cell.Cell.IS_ALIVE)
-        #print(f"Cellule ({random_cell_r}, {random_cell_c}) = {Cell.CellClass.get_state(random_cell_r, random_cell_c)}")
 
     @classmethod
     def getLine_wth(cls):
