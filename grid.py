@@ -1,6 +1,7 @@
 from random import randint
 import Cell
 import pygame as pg
+from pprint import pprint
 
 
 class Grid:
@@ -25,7 +26,9 @@ class Grid:
         column = pos[0] // (Grid.m_square_wth + Grid.m_line_wth)
         row = pos[1] // (Grid.m_square_hght + Grid.m_line_wth)
         cls.m_grid[row][column] = 1
-        print(f"La cellule est {Cell.CellClass.has_state(row, column, Cell.Cell.IS_ALIVE)} mais elle est {Cell.CellClass.get_state(row, column)}")  # true : vivante, false : morte
+        pg.draw.rect(_win, (42, 204, 113), pg.Rect(row, column, cls.getSquare_wth(), cls.getSquare_hght()))
+        print(
+            f"La cellule est {Cell.CellClass.has_state(row, column, Cell.Cell.IS_ALIVE)} mais elle est {Cell.CellClass.get_state(row, column)}")  # true : vivante, false : morte
 
     @classmethod
     def generate_life(cls, _win):
