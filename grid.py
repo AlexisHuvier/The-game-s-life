@@ -71,6 +71,7 @@ class Grid:
                         if Cell.CellClass.get_state(row + x, column + y) == Cell.Cell.IS_ALIVE:
                             neighbours_count += 1
                         print(neighbours_count)
+
                 if Cell.CellClass.get_state(row, column) == Cell.Cell.IS_ALIVE and (neighbours_count < 2 or neighbours_count > 3):
                     Cell.CellClass.set_state(row, column, Cell.Cell.IS_DEAD)
                 elif Cell.CellClass.get_state(row, column) == Cell.Cell.IS_ALIVE and (neighbours_count == 2 or neighbours_count == 3):
