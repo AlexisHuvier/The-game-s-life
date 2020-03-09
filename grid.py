@@ -78,6 +78,6 @@ class Grid:
                 elif Cell.CellClass.get_state(row, column) == Cell.Cell.IS_DEAD and neighbours_count == 3:
                     Cell.CellClass.set_state(row, column, Cell.Cell.IS_ALIVE)
                 if Cell.CellClass.get_state(row, column) == Cell.Cell.IS_ALIVE:
-                    pg.draw.rect(_win, (42, 204, 113), (pg.Rect(column * cls.getSquare_wth() + cls.getLine_wth() * (column + 1),row * cls.getSquare_hght() + cls.getLine_wth() * (row + 1),cls.getSquare_wth(), cls.getSquare_hght())))
+                    pg.draw.rect(_win, (42, 204, 113), (pg.Rect(column * cls.getSquare_wth() + cls.getLine_wth() * (column + 1), row * cls.getSquare_hght() + cls.getLine_wth() * (row + 1), cls.getSquare_wth(), cls.getSquare_hght())))
                 if Cell.CellClass.get_state(row, column) == Cell.Cell.IS_DEAD:
-                    pg.draw.rect(_win, (52, 73, 94), (pg.Rect(column * cls.getSquare_wth() + cls.getLine_wth() * (column + 1),row * cls.getSquare_hght() + cls.getLine_wth() * (row + 1),cls.getSquare_wth(), cls.getSquare_hght())))
+                    pg.draw.rect(_win, (52, 73, 94), (pg.Rect(column * cls.getSquare_wth() + cls.getLine_wth() * (column + 1), row * cls.getSquare_hght() + cls.getLine_wth() * (row + 1), cls.getSquare_wth(), cls.getSquare_hght())))
