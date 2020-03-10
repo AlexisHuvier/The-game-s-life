@@ -66,8 +66,8 @@ class Grid:
         for row in range(1, 49):
             for column in range(1, 66):
                 neighbours_count = 0
-                for x in range(-1, 2):
-                    for y in range(-1, 2):
+                for x in [it for it in range(-1, 2) if it != 0]:
+                    for y in [it2 for it2 in range(-1, 2) if it2 != 0]:
                         if Cell.CellClass.get_state(row + x, column + y) == Cell.Cell.IS_ALIVE:
                             neighbours_count += 1
                         print(neighbours_count)
