@@ -63,22 +63,23 @@ class Grid:
 
     @classmethod
     def check_life(cls, _win):
+        cell_thing = None
         for row in range(1, 49):
             for column in range(1, 66):
+                cell_thing = Cell.CellClass.get_state(row, column)
                 neighbours_count = 0
                 for x in [it for it in range(-1, 2) if it != 0]:
                     for y in [it2 for it2 in range(-1, 2) if it2 != 0]:
                         if Cell.CellClass.get_state(row + x, column + y) == Cell.Cell.IS_ALIVE:
                             neighbours_count += 1
-                        print(neighbours_count)
-
-                if Cell.CellClass.get_state(row, column) == Cell.Cell.IS_ALIVE and (neighbours_count < 2 or neighbours_count > 3):
+                        #print(neighbours_count)
+                if cell_thing == Cell.Cell.IS_ALIVE and (neighbours_count < 2 or neighbours_count > 3):
                     Cell.CellClass.set_state(row, column, Cell.Cell.IS_DEAD)
-                elif Cell.CellClass.get_state(row, column) == Cell.Cell.IS_ALIVE and (neighbours_count == 2 or neighbours_count == 3):
+                elif cell_thing == Cell.Cell.IS_ALIVE and (neighbours_count == 2 or neighbours_count == 3):
                     Cell.CellClass.set_state(row, column, Cell.Cell.IS_ALIVE)
-                elif Cell.CellClass.get_state(row, column) == Cell.Cell.IS_DEAD and neighbours_count == 3:
+                elif cell_thing == Cell.Cell.IS_DEAD and neighbours_count == 3:
                     Cell.CellClass.set_state(row, column, Cell.Cell.IS_ALIVE)
-                if Cell.CellClass.get_state(row, column) == Cell.Cell.IS_ALIVE:
+                if cell_thing == Cell.Cell.IS_ALIVE:
                     pg.draw.rect(_win, (42, 204, 113), (pg.Rect(column * cls.getSquare_wth() + cls.getLine_wth() * (column + 1), row * cls.getSquare_hght() + cls.getLine_wth() * (row + 1), cls.getSquare_wth(), cls.getSquare_hght())))
-                if Cell.CellClass.get_state(row, column) == Cell.Cell.IS_DEAD:
+                if cell_thing == Cell.Cell.IS_DEAD:
                     pg.draw.rect(_win, (52, 73, 94), (pg.Rect(column * cls.getSquare_wth() + cls.getLine_wth() * (column + 1), row * cls.getSquare_hght() + cls.getLine_wth() * (row + 1), cls.getSquare_wth(), cls.getSquare_hght())))

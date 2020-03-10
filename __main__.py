@@ -1,8 +1,8 @@
 import pygame as pg
 import sys
 from grid import Grid
-from Cell import CellClass, Cell
 import os
+import time
 
 ratio = WIDTH, HEIGHT = 800, 600
 os.environ['SDL_VIDEO_CENTERED'] = str(1)
@@ -24,9 +24,8 @@ def main():
             elif _.type == pg.MOUSEBUTTONDOWN:
                 grid.select_cell(win)
             elif key[pg.K_p]:
-                while 1:
-                    grid.check_life(win)
-                    pg.display.update()
+                grid.check_life(win)
+                pg.display.update()
 
         pg.display.update()
 
