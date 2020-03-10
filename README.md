@@ -3,6 +3,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![Run on Repl.it](https://repl.it/badge/github/Inerska/The-game-s-life)](https://repl.it/github/Inerska/The-game-s-life)
 
 
   <p align="center">
