@@ -15,13 +15,7 @@ def draw(_line_wth, _square_wth):
             cells_table[row, column] = False
 
 
-
-
-
-
-
 def select_cells():
-
     pos = pg.mouse.get_pos()
     column = pos[0] // (square_wth + line_wth)
     row = pos[1] // (square_wth + line_wth)
@@ -39,7 +33,8 @@ def select_cells():
                     row * square_wth + line_wth * (row + 1), square_wth,
                     square_wth())))
 
-def life() :
+
+def life():
     for row in range(1, 49):
         for column in range(1, 66):
 
@@ -49,7 +44,7 @@ def life() :
                     if cells_table[row + x, column + y] == True:
                         neighbours_count += 1
                     # print(neighbours_count)
-            #neighbours_count -= 1
+            # neighbours_count -= 1
             if cells_table[row, column] == True and (neighbours_count < 2 or neighbours_count > 3):
                 cells_table[row, column] = False
             elif cells_table[row, column] == True and (neighbours_count == 2 or neighbours_count == 3):
@@ -77,9 +72,7 @@ square_wth = 10
 draw(line_wth, square_wth)
 print(cells_table)
 
-continuer = True
-while continuer:
-
+while True:
 
     pg.display.update()
     for _ in pg.event.get():
@@ -87,7 +80,7 @@ while continuer:
         if key[pg.K_ESCAPE] or _.type == pg.QUIT:
             pg.quit()
             os.sys.exit(0)
-        if key[pg.K_p] :
+        if key[pg.K_p]:
             gen = 0
             while 1:
                 life()
