@@ -84,7 +84,7 @@ while True:
                 life()
                 pg.display.update()
                 count += 1
-                pg.draw.rect(win, (0, 0, 0), (pg.Rect(370, 635, 100, 400)))
+                pg.draw.rect(win, (27, 27, 27), (pg.Rect(370, 635, 100, 400)))
 
                 count_display = count_font.render(str(count), 0, (42, 204, 113))
                 win.blit(count_display, (370, 635))
