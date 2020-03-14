@@ -81,4 +81,3 @@ while True:
 
         elif _.type == pg.MOUSEBUTTONDOWN:
             select_cells()
-            print(cells_table)
