@@ -31,7 +31,7 @@ def select_cells():
         pg.draw.rect(win, (52, 73, 94), (
             pg.Rect(column * square_wth + line_wth * (column + 1),
                     row * square_wth + line_wth * (row + 1), square_wth,
-                    square_wth())))
+                    square_wth)))
 
 
 def life():
