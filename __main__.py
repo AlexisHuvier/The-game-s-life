@@ -39,10 +39,13 @@ def life():
             neighbours_count = 0
             for x in range(-1, 2):
                 for y in range(-1, 2):
-                    if cells_table[row + x, column + y]:
+                    if cells_table[row + x, column + y] and (x != 0 and y != 0):
                         neighbours_count += 1
+
+
+            print(neighbours_count)
             cells_table[row, column] = neighbours_count == 3 or cells_table[row, column] and neighbours_count == 2
-            neighbours_count = 0
+
             if cells_table[row, column]:
                 pg.draw.rect(win, (42, 204, 113), (
                     pg.Rect(column * square_wth + line_wth * (column + 1),
