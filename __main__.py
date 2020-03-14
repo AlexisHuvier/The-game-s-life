@@ -20,7 +20,6 @@ def select_cells():
     column = pos[0] // (square_wth + line_wth)
     row = pos[1] // (square_wth + line_wth)
     cells_table[row, column] = True
-    print(row, column, cells_table[row, column])
 
     if cells_table[row, column]:
         pg.draw.rect(win, (42, 204, 113), (
@@ -42,8 +41,6 @@ def life():
                 for y in range(-1, 2):
                     if cells_table[row + x, column + y]:
                         neighbours_count += 1
-                    # print(neighbours_count)
-            # neighbours_count -= 1
             if cells_table[row, column] and (neighbours_count < 2 or neighbours_count > 3):
                 cells_table[row, column] = False
             elif cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3):
@@ -69,7 +66,6 @@ cells_table = {}
 line_wth = 2
 square_wth = 10
 draw(line_wth, square_wth)
-print(cells_table)
 
 while True:
     pg.display.update()
@@ -79,12 +75,9 @@ while True:
             pg.quit()
             os.sys.exit(0)
         if key[pg.K_p]:
-            gen = 0
             while 1:
                 life()
                 pg.display.update()
-                gen += 1
-                print(gen)
 
         elif _.type == pg.MOUSEBUTTONDOWN:
             select_cells()
