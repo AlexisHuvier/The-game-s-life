@@ -1,3 +1,4 @@
+import time
 from random import randint
 
 import pygame as pg
@@ -11,35 +12,74 @@ def draw(_line_wth, _square_wth):
                          [(_line_wth + _square_wth) * column + _line_wth,
                           (_line_wth + _square_wth) * row + _line_wth,
                           _square_wth, _square_wth])
-            # cells_table[row][column] = False
+            cells_table[row, column] = False
 
 
-def generate_life(_win, _line_wth, _square_wth):
-    global vivant
-    random_cell_r, random_cell_c = randint(0, 49), randint(0, 66)
-    pg.draw.rect(_win, (42, 204, 113), (
-        pg.Rect(random_cell_c * _square_wth + _line_wth * (random_cell_c + 1),
-                random_cell_r * _square_wth + _line_wth * (random_cell_r + 1), _square_wth,
-                _square_wth)))
-    vivant.append(random_cell_r, random_cell_c)
+
+
+
 
 
 def select_cells():
-    pass
+
+    pos = pg.mouse.get_pos()
+    column = pos[0] // (square_wth + line_wth)
+    row = pos[1] // (square_wth + line_wth)
+    cells_table[row, column] = True
+    print(row, column, cells_table[row, column])
+
+    if cells_table[row, column] == True:
+        pg.draw.rect(win, (42, 204, 113), (
+            pg.Rect(column * square_wth + line_wth * (column + 1),
+                    row * square_wth + line_wth * (row + 1), square_wth,
+                    square_wth)))
+    if cells_table[row, column] == False:
+        pg.draw.rect(win, (52, 73, 94), (
+            pg.Rect(column * square_wth + line_wth * (column + 1),
+                    row * square_wth + line_wth * (row + 1), square_wth,
+                    square_wth())))
+
+def life() :
+    for row in range(1, 49):
+        for column in range(1, 66):
+
+            neighbours_count = 0
+            for x in range(-1, 2):
+                for y in range(-1, 2):
+                    if cells_table[row + x, column + y] == True:
+                        neighbours_count += 1
+                    # print(neighbours_count)
+            #neighbours_count -= 1
+            if cells_table[row, column] == True and (neighbours_count < 2 or neighbours_count > 3):
+                cells_table[row, column] = False
+            elif cells_table[row, column] == True and (neighbours_count == 2 or neighbours_count == 3):
+                cells_table[row, column] = True
+            elif cells_table[row, column] == False and neighbours_count == 3:
+                cells_table[row, column] = True
+            if cells_table[row, column] == True:
+                pg.draw.rect(win, (42, 204, 113), (
+                    pg.Rect(column * square_wth + line_wth * (column + 1),
+                            row * square_wth + line_wth * (row + 1), square_wth,
+                            square_wth)))
+            if cells_table[row, column] == False:
+                pg.draw.rect(win, (52, 73, 94), (
+                    pg.Rect(column * square_wth + line_wth * (column + 1),
+                            row * square_wth + line_wth * (row + 1), square_wth,
+                            square_wth)))
+    time.sleep(0.5)
 
 
 pg.init()
 win = pg.display.set_mode((800, 600))
-cells_table = [[], []]
+cells_table = {}
 line_wth = 2
 square_wth = 10
 draw(line_wth, square_wth)
-[generate_life(win, 2, 10) for _ in range(100)]
-vivant = []
+print(cells_table)
+
 continuer = True
 while continuer:
 
-    print(vivant)
 
     pg.display.update()
     for _ in pg.event.get():
@@ -47,3 +87,14 @@ while continuer:
         if key[pg.K_ESCAPE] or _.type == pg.QUIT:
             pg.quit()
             os.sys.exit(0)
+        if key[pg.K_p] :
+            gen = 0
+            while 1:
+                life()
+                pg.display.update()
+                gen += 1
+                print(gen)
+
+        elif _.type == pg.MOUSEBUTTONDOWN:
+            select_cells()
+            print(cells_table)
