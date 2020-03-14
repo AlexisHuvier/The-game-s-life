@@ -37,11 +37,10 @@ def select_cells():
 def life():
     for row in range(1, 49):
         for column in range(1, 66):
-
             neighbours_count = 0
             for x in range(-1, 2):
                 for y in range(-1, 2):
-                    if cells_table[row + x, column + y] == True:
+                    if cells_table[row + x, column + y]:
                         neighbours_count += 1
                     # print(neighbours_count)
             # neighbours_count -= 1
