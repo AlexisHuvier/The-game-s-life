@@ -41,12 +41,8 @@ def life():
                 for y in range(-1, 2):
                     if cells_table[row + x, column + y]:
                         neighbours_count += 1
-            if cells_table[row, column] and (neighbours_count < 2 or neighbours_count > 3):
-                cells_table[row, column] = False
-            elif cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3):
-                cells_table[row, column] = True
-            elif not cells_table[row, column] and neighbours_count == 3:
-                cells_table[row, column] = True
+            cells_table[row, column] = neighbours_count == 3 or cells_table[row, column] and neighbours_count == 2
+            neighbours_count = 0
             if cells_table[row, column]:
                 pg.draw.rect(win, (42, 204, 113), (
                     pg.Rect(column * square_wth + line_wth * (column + 1),
