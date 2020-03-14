@@ -59,7 +59,14 @@ def life():
 
 
 pg.init()
-win = pg.display.set_mode((800, 600))
+win = pg.display.set_mode((1000,700))
+BG = pg.image.load("background.png").convert()
+win.blit(BG, (0,0))
+count_font = pg.font.Font("Custom_Font_Pixel.ttf", 50 )
+count = 0
+count_display = count_font.render(str(count), 0, (42,204,113))
+win.blit(count_display, (370, 635))
+
 cells_table = {}
 line_wth = 2
 square_wth = 10
@@ -76,6 +83,11 @@ while True:
             while 1:
                 life()
                 pg.display.update()
+                count += 1
+                pg.draw.rect(win, (0, 0, 0), (pg.Rect(370, 635, 100, 400)))
+
+                count_display = count_font.render(str(count), 0, (42, 204, 113))
+                win.blit(count_display, (370, 635))
 
         elif _.type == pg.MOUSEBUTTONDOWN:
             select_cells()
