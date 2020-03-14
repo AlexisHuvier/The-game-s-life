@@ -42,7 +42,6 @@ def life():
                     if cells_table[row + x, column + y] and (x != 0 and y != 0):
                         neighbours_count += 1
 
-
             print(neighbours_count)
             cells_table[row, column] = neighbours_count == 3 or cells_table[row, column] and neighbours_count == 2
 
