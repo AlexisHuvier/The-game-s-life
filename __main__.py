@@ -45,11 +45,11 @@ def life():
                         neighbours_count += 1
                     # print(neighbours_count)
             # neighbours_count -= 1
-            if cells_table[row, column] == True and (neighbours_count < 2 or neighbours_count > 3):
+            if cells_table[row, column] and (neighbours_count < 2 or neighbours_count > 3):
                 cells_table[row, column] = False
-            elif cells_table[row, column] == True and (neighbours_count == 2 or neighbours_count == 3):
+            elif cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3):
                 cells_table[row, column] = True
-            elif cells_table[row, column] == False and neighbours_count == 3:
+            elif not cells_table[row, column] and neighbours_count == 3:
                 cells_table[row, column] = True
             if cells_table[row, column]:
                 pg.draw.rect(win, (42, 204, 113), (
