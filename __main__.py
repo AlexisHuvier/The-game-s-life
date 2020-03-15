@@ -4,6 +4,7 @@ from random import randint
 import pygame as pg
 import os
 
+os.environ['SDL_VIDEO_CENTERED'] = str(1)
 
 def draw(_line_wth, _square_wth):
     for row in range(50):
