@@ -4,6 +4,8 @@ from random import randint
 import pygame as pg
 import os
 
+os.environ['SDL_VIDEO_CENTERED'] = str(1)
+
 
 def draw(_line_wth, _square_wth):
     for row in range(50):
@@ -59,12 +61,13 @@ def life():
 
 
 pg.init()
-win = pg.display.set_mode((1000,700))
+win = pg.display.set_mode((1000, 700))
+pg.display.set_caption("The game's life")
 BG = pg.image.load("background.png").convert()
-win.blit(BG, (0,0))
-count_font = pg.font.Font("Custom_Font_Pixel.ttf", 50 )
+win.blit(BG, (0, 0))
+count_font = pg.font.Font("Custom_Font_Pixel.ttf", 50)
 count = 0
-count_display = count_font.render(str(count), 0, (42,204,113))
+count_display = count_font.render(str(count), 0, (42, 204, 113))
 win.blit(count_display, (370, 635))
 
 cells_table = {}
