@@ -45,7 +45,12 @@ def life():
                         neighbours_count += 1
 
             print(neighbours_count)
-            cells_table[row, column] = neighbours_count == 3 or cells_table[row, column] and neighbours_count == 2
+            if cells_table[row, column] == False and neighbours_count == 3 :
+                cells_table[row, column] = True
+            if cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3) :
+                cells_table[row, column] = True
+            else :
+                cells_table[row, column] = False
 
             if cells_table[row, column]:
                 pg.draw.rect(win, (42, 204, 113), (
@@ -64,6 +69,8 @@ pg.init()
 win = pg.display.set_mode((1000, 700))
 pg.display.set_caption("The game's life")
 BG = pg.image.load("background.png").convert()
+icon = pg.image.load("icone.png")
+pg.display.set_icon(icon)
 win.blit(BG, (0, 0))
 count_font = pg.font.Font("Custom_Font_Pixel.ttf", 50)
 count = 0
