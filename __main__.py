@@ -1,4 +1,5 @@
 import time
+import copy
 from random import randint
 
 import pygame as pg
@@ -35,7 +36,8 @@ def select_cells():
                     square_wth)))
 
 
-def life():
+def life_state(cells_table):
+    new_cells_table = copy.deepcopy(cells_table)
     for row in range(1, 49):
         for column in range(1, 66):
             neighbours_count = 0
@@ -46,12 +48,15 @@ def life():
 
             print(neighbours_count)
             if cells_table[row, column] == False and neighbours_count == 3 :
-                cells_table[row, column] = True
+                new_cells_table[row, column] = True
             if cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3) :
-                cells_table[row, column] = True
+                new_cells_table[row, column] = True
             else :
-                cells_table[row, column] = False
-
+                new_cells_table[row, column] = False
+    return new_cells_table
+def square_colors (cells_table) :
+    for row in range (1, 49) :
+        for column in range(1, 66):
             if cells_table[row, column]:
                 pg.draw.rect(win, (42, 204, 113), (
                     pg.Rect(column * square_wth + line_wth * (column + 1),
@@ -62,6 +67,7 @@ def life():
                     pg.Rect(column * square_wth + line_wth * (column + 1),
                             row * square_wth + line_wth * (row + 1), square_wth,
                             square_wth)))
+
     time.sleep(0.5)
 
 
@@ -91,7 +97,8 @@ while True:
             os.sys.exit(0)
         if key[pg.K_p]:
             while 1:
-                life()
+                cells_table = life_state(cells_table)
+                square_colors(cells_table)
                 pg.display.update()
                 count += 1
                 pg.draw.rect(win, (27, 27, 27), (pg.Rect(370, 635, 100, 400)))
