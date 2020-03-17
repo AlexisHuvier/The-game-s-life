@@ -40,7 +40,7 @@ def life_state(_cells_table):
             neighbours_count = 0
             for x in range(-1, 2):
                 for y in range(-1, 2):
-                    if _cells_table[row + x, column + y] and (x != 0 or y != 0):
+                    if _cells_table[row + x, column + y] and (x is not 0 or y is not 0):
                         neighbours_count += 1
 
             if not _cells_table[row, column] and neighbours_count == 3:
