@@ -47,22 +47,24 @@ def life_state(cells_table):
                         neighbours_count += 1
 
             print(neighbours_count)
-            if cells_table[row, column] == False and neighbours_count == 3 :
+            if not cells_table[row, column] and neighbours_count == 3:
                 new_cells_table[row, column] = True
-            if cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3) :
+            if cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3):
                 new_cells_table[row, column] = True
-            else :
+            else:
                 new_cells_table[row, column] = False
     return new_cells_table
-def square_colors (cells_table) :
-    for row in range (1, 49) :
+
+
+def square_colors(_cells_table):
+    for row in range(1, 49):
         for column in range(1, 66):
-            if cells_table[row, column]:
+            if _cells_table[row, column]:
                 pg.draw.rect(win, (42, 204, 113), (
                     pg.Rect(column * square_wth + line_wth * (column + 1),
                             row * square_wth + line_wth * (row + 1), square_wth,
                             square_wth)))
-            if not cells_table[row, column]:
+            if not _cells_table[row, column]:
                 pg.draw.rect(win, (52, 73, 94), (
                     pg.Rect(column * square_wth + line_wth * (column + 1),
                             row * square_wth + line_wth * (row + 1), square_wth,
