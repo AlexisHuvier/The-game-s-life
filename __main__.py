@@ -85,7 +85,7 @@ line_wth = 2
 square_wth = 10
 draw(line_wth, square_wth)
 
-while True:
+while 1:
     pg.display.update()
     for _ in pg.event.get():
         key = pg.key.get_pressed()
