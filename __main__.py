@@ -70,7 +70,7 @@ def square_colors(_cells_table):
                             row * square_wth + line_wth * (row + 1), square_wth,
                             square_wth)))
 
-    time.sleep(0.5)
+    time.sleep(0.3)
 
 
 pg.init()
