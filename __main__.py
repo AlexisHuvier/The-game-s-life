@@ -22,7 +22,10 @@ def select_cells():
     pos = pg.mouse.get_pos()
     column = pos[0] // (square_wth + line_wth)
     row = pos[1] // (square_wth + line_wth)
-    cells_table[row, column] = True
+    if not cells_table[row, column]:
+        cells_table[row, column] = True
+    else :
+        cells_table[row, column] = False
 
     pg.draw.rect(win, (42, 204, 113), (
         pg.Rect(column * square_wth + line_wth * (column + 1),
