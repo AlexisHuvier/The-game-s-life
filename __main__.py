@@ -49,7 +49,7 @@ def life_state(_cells_table):
             print(neighbours_count)
             if not _cells_table[row, column] and neighbours_count == 3:
                 new_cells_table[row, column] = True
-            if _cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3):
+            elif _cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3):
                 new_cells_table[row, column] = True
             else:
                 new_cells_table[row, column] = False
