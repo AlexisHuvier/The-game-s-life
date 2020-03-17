@@ -72,17 +72,14 @@ def square_colors(_cells_table):
 pg.init()
 win = pg.display.set_mode((1000, 700))
 pg.display.set_caption("The game's life")
-BG = pg.image.load("background.png").convert()
 pg.display.set_icon(pg.image.load("icone.png"))
-win.blit(BG, (0, 0))
+win.blit(pg.image.load("background.png").convert(), (0, 0))
 count_font = pg.font.Font("Custom_Font_Pixel.ttf", 50)
 count = 0
 count_display = count_font.render(str(count), 0, (42, 204, 113))
 win.blit(count_display, (370, 635))
 
-cells_table = {}
-line_wth = 2
-square_wth = 10
+cells_table, line_wth, square_wth = {}, 2, 10
 draw(line_wth, square_wth)
 
 while 1:
