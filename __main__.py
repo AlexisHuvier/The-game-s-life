@@ -24,16 +24,13 @@ def select_cells():
     row = pos[1] // (square_wth + line_wth)
     cells_table[row, column] = True
 
-    if cells_table[row, column]:
-        pg.draw.rect(win, (42, 204, 113), (
-            pg.Rect(column * square_wth + line_wth * (column + 1),
-                    row * square_wth + line_wth * (row + 1), square_wth,
-                    square_wth)))
-    if not cells_table[row, column]:
-        pg.draw.rect(win, (52, 73, 94), (
-            pg.Rect(column * square_wth + line_wth * (column + 1),
-                    row * square_wth + line_wth * (row + 1), square_wth,
-                    square_wth)))
+    pg.draw.rect(win, (42, 204, 113), (
+        pg.Rect(column * square_wth + line_wth * (column + 1),
+                row * square_wth + line_wth * (row + 1), square_wth,
+                square_wth))) if cells_table[row, column] else pg.draw.rect(win, (52, 73, 94), (
+        pg.Rect(column * square_wth + line_wth * (column + 1),
+                row * square_wth + line_wth * (row + 1), square_wth,
+                square_wth)))
 
 
 def life_state(_cells_table):
