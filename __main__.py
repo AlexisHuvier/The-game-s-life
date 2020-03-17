@@ -36,20 +36,20 @@ def select_cells():
                     square_wth)))
 
 
-def life_state(cells_table):
-    new_cells_table = copy.deepcopy(cells_table)
+def life_state(_cells_table):
+    new_cells_table = copy.deepcopy(_cells_table)
     for row in range(1, 49):
         for column in range(1, 66):
             neighbours_count = 0
             for x in range(-1, 2):
                 for y in range(-1, 2):
-                    if cells_table[row + x, column + y] and (x != 0 and y != 0):
+                    if _cells_table[row + x, column + y] and (x != 0 and y != 0):
                         neighbours_count += 1
 
             print(neighbours_count)
-            if not cells_table[row, column] and neighbours_count == 3:
+            if not _cells_table[row, column] and neighbours_count == 3:
                 new_cells_table[row, column] = True
-            if cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3):
+            if _cells_table[row, column] and (neighbours_count == 2 or neighbours_count == 3):
                 new_cells_table[row, column] = True
             else:
                 new_cells_table[row, column] = False
